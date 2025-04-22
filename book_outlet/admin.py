@@ -1,8 +1,14 @@
 from django.contrib import admin
 
-from .models import Book, Author
+from .models import Book, Author, Address
 
 # Register your models here.
+
+class AddressAdmin(admin.ModelAdmin):
+    list_display = ('street', 'city', 'zip_code')
+    search_fields = ('street', 'city')
+    
+admin.site.register(Address, AddressAdmin)
 
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name')
